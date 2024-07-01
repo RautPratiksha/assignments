@@ -7,7 +7,7 @@ var jwt=require('jsonwebtoken')
 
 //create a user using : Post"/api/auth/
 const JWT_SECRET="TFKCFdsgUIUdlal"
-router.post('/createUser',[body('name').isLength({ min: 3 }), body('email').isEmail(),
+router.post('/createuser',[body('name').isLength({ min: 3 }), body('email').isEmail(),
     body('password').isStrongPassword()
     ], async (req, res) => {
         const nameErrors = validationResult(req);
@@ -53,6 +53,7 @@ router.post('/createUser',[body('name').isLength({ min: 3 }), body('email').isEm
 
 //Authenticate the user
 router.post('/login',  async (req, res) => {
+    res.json("hiiii")
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
